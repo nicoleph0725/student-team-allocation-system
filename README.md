@@ -1,13 +1,13 @@
-# Group Allocation system by Team *enter team name here*
+# Group Allocation system by Team Lion
 A group allocation system developed for the Small Group Project assignment of the Software Engineering Group Project module at King's College London.
 
 ## Team members
 The members of the team are:
-- *enter full name 1 here*
-- *enter full name 2 here*
-- *enter full name 3 here*
-- *enter full name 4 here*
-- *enter full name 5 here*
+- *Harrison Buck*
+- *Harmehar Kaur*
+- *Yinte Lee*
+- *Nicole Pham*
+- *Alfie Rider*
 
 ## Deployment
 
