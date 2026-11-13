@@ -50,20 +50,35 @@ def dashboard(request):
 
 
 def read_csv(uploaded_file):
+    """
     text = uploaded_file.read().decode('utf-8-sig')
     rows = list(csv.reader(io.StringIO(text)))
     if not rows:
         return [], []
     return rows[0], rows[1:]
+    """
+
+    """Return the CSV rows as a list of dicts, keyed by the header row."""
+    text = uploaded_file.read().decode('utf-8-sig')
+    return list(csv.DictReader(io.StringIO(text)))
 
 
 @login_required
 def import_csv(request):
+    """
     form = CSVUploadForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         header, rows = read_csv(form.cleaned_data['csv_file'])
         return render(request, 'csv_report.html',
             {'header': header, 'rows': rows, 'form':form})
+    return render(request, 'import_csv.html', {'form': form})
+    """
+    form = CSVUploadForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        students = read_csv(form.cleaned_data['csv_file'])
+        headers = list(students[0].keys()) if students else []
+        return render(request, 'csv_report.html',
+            {'students': students, 'headers': headers, 'form': form})
     return render(request, 'import_csv.html', {'form': form})
 
 
