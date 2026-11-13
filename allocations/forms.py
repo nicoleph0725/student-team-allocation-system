@@ -81,3 +81,8 @@ class UserUpdateForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'is_superuser']
+
+
+# Form which allows the user to select a file
+class CSVUploadForm(BootstrapFormMixin, forms.Form):
+    csv_file = forms.FileField(label='')

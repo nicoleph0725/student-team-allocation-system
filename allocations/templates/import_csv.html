@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Upload Students CSV</h1>
+    <form method="post" action="{% url 'import_csv' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'partials/form.html' %}
+        <button type="submit" class="btn btn-primary">Import CSV</button>
+    </form>
+
+{% endblock %}

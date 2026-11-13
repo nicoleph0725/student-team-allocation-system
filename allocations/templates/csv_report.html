@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Displays CSV rows (currently just for testing) -->
+    <div class="border rounded-3 overflow-auto">
+    <table class="table table-striped mb-0">
+    <thead>
+        <tr>
+            {% for cell in header %}
+            <th scope="col">{{ cell }}</th>
+            {% endfor %}
+        </tr>
+        <thead>
+            <tr>
+            {% for h in headers %}<th scope="col">{{ h }}</th>{% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    {% for value in student.values %}<td>{{ value }}</td>{% endfor %}
+                </tr>
+            {% empty %}
+                <tr><td colspan="{{ headers|length }}" class="text-center text-muted">No rows to display</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
